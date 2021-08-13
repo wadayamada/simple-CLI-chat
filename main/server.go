@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	socketio "github.com/googollee/go-socket.io"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
@@ -37,6 +38,7 @@ func main() {
 	defer server.Close()
 
 	http.Handle("/socket.io/", server)
-	log.Println("Serving at localhost:3000...")
-	log.Fatal(http.ListenAndServe(":3000", nil))
+	http.Handle("/metrics", promhttp.Handler())
+	log.Println("Serving at localhost:5000...")
+	log.Fatal(http.ListenAndServe(":5000", nil))
 }
