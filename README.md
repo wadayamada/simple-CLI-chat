@@ -18,6 +18,13 @@ CLIで使うシンプルなチャットアプリ
 
 4. 標準入力が互いに送信される
 
+    **server**
+    ![](server.png)
+    **clientA**
+    ![](clientA.png)
+    **clientB**
+    ![](clientB.png)
+
 ## 技術
 
 ### サーバ
