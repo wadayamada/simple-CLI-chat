@@ -1,6 +1,6 @@
 const readline = require("readline");
 const io = require("socket.io-client");
-const socket = io("http://localhost:3000");
+const socket = io("http://localhost:5000");
 
 const user = process.argv[2];
 
@@ -15,6 +15,11 @@ rl.on("line", (line) => {
 
 socket.on("connect", () => {
   console.log(`connected, id: ${socket.id}`);
+  socket.emit("archive", user);
+});
+
+socket.on("archive", (archives) => {
+  console.log(`archives: ${archives}`);
 });
 
 socket.on("broadcast", (data) => {
